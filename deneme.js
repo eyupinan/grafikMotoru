@@ -39,9 +39,9 @@ for (let i=0;i<1000;i++){
     ornek5.color = 'blue'
     objectList.push(ornek5)
 }
-//var canvas=document.createElement("canvas")
+var canvas=document.createElement("canvas")
 //canvas.setAttribute("id","canvas_id")
-const engine = new Engine(1200,600)
+const engine = new Engine(1200,500,canvas)
 engine.add(ornek);
 ornek.add(ornek2)
 ornek2.add(ornek3)
