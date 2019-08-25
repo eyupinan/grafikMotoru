@@ -8,6 +8,7 @@
     "build": "babel src -d es5",
     "watch": "webpack --watch",
     "dev": "webpack --watch --mode development",
+    "dev:serve": "webpack-dev-server --watch --mode development",
     "lint": "eslint ./src/**/*.js",
     "lint:test": "eslint ./tests/**/*.js",
     "lint:fix:test": "eslint ./tests/**/*.js --fix",
@@ -27,7 +28,8 @@
     "eslint-plugin-standard": "^4.0.1",
     "mocha": "^6.2.0",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "css-loader": "^3.2.0",
