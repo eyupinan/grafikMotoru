@@ -3,7 +3,7 @@ export class DisplayContainer extends CoreObject {
     constructor () {
         super()
         this.autoRender=true
-        this.frameRate=0;
+        this._frameRate=0;
         this.deltaTime = 0
         this._children = []
         this._parent = null
@@ -96,10 +96,7 @@ export class DisplayContainer extends CoreObject {
         })
         if (verify === true && finished === true) {
             this.newTime = new Date().getTime()
-            this.deltaTime = this.newTime - this.lastTime
-            this.frameRate=1000/this.deltaTime
-            
-            
+            this.deltaTime = (this.newTime - this.lastTime)+1
             return true
         }}
         else{
