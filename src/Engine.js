@@ -62,7 +62,7 @@ export class Engine extends DisplayContainer {
             this.clear()
             this.renderVerify = this.update(this.context)
             this.checkMouseOver(this.mousePosition[0], this.mousePosition[1])  
-            this.element.innerHTML=this.frameRate
+            this.element.innerHTML="fps: " +this.frameRate
 
         } catch (err) {
              //console.log(err)
@@ -111,7 +111,6 @@ export class Engine extends DisplayContainer {
     }
     frameCalculator(){
         setInterval(()=>{
-            console.log(this.frameCount+"-"+this.lastFrameCount)
             this._frameRate=this.frameCount-this.lastFrameCount
             this.lastFrameCount=this.frameCount
         },1000)

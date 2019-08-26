@@ -24,7 +24,7 @@ function baslat(){
         ornek2.degree = ornek2.degree - 3.1
     })
     let objectList=[]
-    for (let i=0;i<1000;i++){
+    for (let i=0;i<500;i++){
         let ornek5 = new Kare()
         ornek5.name = 'kare'
         ornek5.setPosition(300, 150)
