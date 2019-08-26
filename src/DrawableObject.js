@@ -38,7 +38,7 @@ export class DrawableObject extends DisplayContainer {
     setParent (obj) {
         this._parent = obj
     }
-
+    
     getDegree () {
         return this.degree
     }

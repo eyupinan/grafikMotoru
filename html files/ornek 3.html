@@ -3,12 +3,26 @@
         canvas {
 
 background-color: #f1f1f1;
-}</style> <script>
-function fonkCanvas(wid,hei){
-    var canvas = document.createElement("canvas");
-    new Engine(wid,hei,canvas)
-}
-</script></head>
+}</style>
+ <script>
+        function fonkCanvas(wid,hei){
+            let eng=new Engine(wid,hei)
+            let kare =new Kare()
+        
+        
+        kare.setPosition(100, 150)
+        kare.setSize(160)
+        kare.setAngles()
+        kare.setRotate(0)
+        kare.color = 'blue'
+        eng.add(kare)
+        console.log(eng._children)
+        kare.on("onmouseover",()=>{
+            kare.Degree=kare.Degree+3
+        })
+            
+        }
+        </script></head>
     <body>
     <button onclick="fonkCanvas(800,600)" >canvas oluştur</button>
     <script type="text/javascript" src="../bundled/graph.bundle.js"></script></body>

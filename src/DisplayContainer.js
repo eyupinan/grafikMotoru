@@ -2,6 +2,8 @@ import { CoreObject } from 'eventemt'
 export class DisplayContainer extends CoreObject {
     constructor () {
         super()
+        this.autoRender=true
+        this.frameRate=0;
         this.deltaTime = 0
         this._children = []
         this._parent = null
@@ -77,7 +79,10 @@ export class DisplayContainer extends CoreObject {
 
     update (context) {
         this.lastTime = new Date().getTime()
-        const finished = this.render(context)
+        var finished
+        if (this.autoRender===true){
+            finished = this.render(context)
+        
         let verify = false
         const verifyList = []
         if (this._children.length === 0) {
@@ -92,6 +97,12 @@ export class DisplayContainer extends CoreObject {
         if (verify === true && finished === true) {
             this.newTime = new Date().getTime()
             this.deltaTime = this.newTime - this.lastTime
+            this.frameRate=1000/this.deltaTime
+            
+            
+            return true
+        }}
+        else{
             return true
         }
     }
@@ -99,4 +110,5 @@ export class DisplayContainer extends CoreObject {
     getPosition () {
         return [0, 0]
     }
+    
 }
