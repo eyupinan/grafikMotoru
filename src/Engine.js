@@ -1,6 +1,6 @@
 import { DisplayContainer } from './DisplayContainer'
 export class Engine extends DisplayContainer {
-    constructor (...options) {
+    constructor (options) {
         super()
         this.frameCount=0;
         this.lastFrameCount=0;
@@ -8,33 +8,22 @@ export class Engine extends DisplayContainer {
         this.canvasbackgroundColor="#f1f1f1"
         this.newTime = 0
         this.lastTime = 0
-        this.element=document.getElementById("fps")
+        //this.element=document.getElementById("fps")
         this.renderVerify = false
-        const defaultWidth = 1200
-        const defaultHeight = 600
+        this.width=1200
+        this.height=600
         this.mousePosition = [0, 0]
-        this.frameCalculator()
-        try {
-            if (options[0]===undefined){
-                this.width=defaultWidth
-                this.height=defaultHeight
-                this.canvasCreater()
-            }
-            else if (typeof(options[0])==="number" && typeof(options[1])==="number"){
-                this.width=options[0]
-                this.height=options[1]
-                this.canvasCreater(options[2])
-            }
-            else if (typeof(options[0])==="object" || typeof(options[0])==="string" ){
-                this.width=defaultWidth
-                this.height=defaultHeight
-                this.canvasCreater(options[0])
-            }
-            
-        } catch (err) {
-            console.log('canvas oluşturulurken bir sorunla karşılaşıldı!')
-        }
-        
+        //this.frameCalculator()
+        let canvasArg
+        if(options===undefined){options={}}
+        if(options["width"]!==undefined) {this.width=options["width"]}
+        if(options["height"]!==undefined) {this.height=options["height"]}
+        if(options["canvas"]!==undefined) {canvasArg=options["canvas"]}
+        if(options["autoRender"]!==undefined) {this.autoRender=options["autoRender"]}
+        if(options["frameRate"]!==undefined) {this._frameRate=options["frameRate"]}
+        if(options["backgroundColor"]!==undefined) {this.canvasbackgroundColor=options["backgroundColor"]}
+        this.canvasCreater(canvasArg)
+        console.log(this._frameRate)
         this.canvas.onmousemove = (mouseEvent) => this.findMouseCoords(mouseEvent, this.canvas)
         this.updateScreen()
     }
@@ -62,12 +51,14 @@ export class Engine extends DisplayContainer {
             this.clear()
             this.renderVerify = this.update(this.context)
             this.checkMouseOver(this.mousePosition[0], this.mousePosition[1])  
+            if (this.renderVerify===true){
+            requestAnimationFrame(() => this.updateScreen())}
             this.element.innerHTML="fps: " +this.frameRate
 
         } catch (err) {
              //console.log(err)
         }
-        requestAnimationFrame(() => this.updateScreen())
+        
     }
 
     checkMouseOver (x, y) {

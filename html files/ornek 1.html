@@ -9,7 +9,7 @@ background-color: #f1f1f1;
      var kare
     function fonkCanvas(){
         var canvas = document.createElement("canvas");
-        eng=new Engine(1200,500,canvas)
+        eng=new Engine({"width":899,"height":500,"canvas":canvas,"autoRender":true ,"frameRate":32})
         kare =new Kare()
         kare.setPosition(100, 150)
         kare.setSize(160)
