@@ -2,8 +2,8 @@ import { CoreObject } from 'eventemt'
 export class DisplayContainer extends CoreObject {
     constructor () {
         super()
-        this.autoRender=true
-        this._frameRate=0;
+        this.autoRender = true
+        this._frameRate = 0
         this.deltaTime = 0
         this._children = []
         this._parent = null
@@ -80,26 +80,26 @@ export class DisplayContainer extends CoreObject {
     update (context) {
         this.lastTime = new Date().getTime()
         var finished
-        if (this.autoRender===true){
+        if (this.autoRender === true) {
             finished = this.render(context)
-        
-        let verify = false
-        const verifyList = []
-        if (this._children.length === 0) {
-            verify = true
-        }
-        for (let i = 0; i < this._children.length; i++) {
-            verifyList[i] = this._children[i].update(context)
-        }
-        verify = verifyList.every(function (value) {
-            return value === true
-        })
-        if (verify === true && finished === true) {
-            this.newTime = new Date().getTime()
-            this.deltaTime = (this.newTime - this.lastTime)+1
-            return true
-        }}
-        else{
+
+            let verify = false
+            const verifyList = []
+            if (this._children.length === 0) {
+                verify = true
+            }
+            for (let i = 0; i < this._children.length; i++) {
+                verifyList[i] = this._children[i].update(context)
+            }
+            verify = verifyList.every(function (value) {
+                return value === true
+            })
+            if (verify === true && finished === true) {
+                this.newTime = new Date().getTime()
+                this.deltaTime = (this.newTime - this.lastTime) + 1
+                return true
+            }
+        } else {
             return true
         }
     }
@@ -107,5 +107,4 @@ export class DisplayContainer extends CoreObject {
     getPosition () {
         return [0, 0]
     }
-    
 }
