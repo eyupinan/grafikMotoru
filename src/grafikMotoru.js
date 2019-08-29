@@ -6,14 +6,15 @@ import {Ucgen} from './Ucgen'
 import {Circle} from './Circle'
 
 window.Engine=Engine
-window.DisplayContainer.DisplayContainer
+window.DisplayContainer=DisplayContainer
 window.DrawableObject=DrawableObject
 window.Kare=Kare
 window.Circle=Circle
 window.Ucgen=Ucgen
+
 export {Engine}
-export {DisplayContainer}
 export {DrawableObject}
+export {DisplayContainer}
 export {Kare}
 export {Ucgen}
 export {Circle}
