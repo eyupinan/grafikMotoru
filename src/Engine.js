@@ -8,12 +8,12 @@ export class Engine extends DisplayContainer {
         this.canvasbackgroundColor = '#f1f1f1'
         this.newTime = 0
         this.lastTime = 0
-        // this.element=document.getElementById("fps")
+         this.element=document.getElementById("fps")
         this.renderVerify = false
         this.width = 1200
         this.height = 600
         this.mousePosition = [0, 0]
-        // this.frameCalculator()
+        //this.frameCalculator()
         let canvasArg
         if (options === undefined) { options = {} }
         if (options.width !== undefined) { this.width = options.width }
