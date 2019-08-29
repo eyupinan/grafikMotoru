@@ -2,6 +2,7 @@ import {Engine} from './src/Engine'
 import {DrawableObject} from './src/DrawableObject'
 import {Kare} from './src/Kare'
 import {Ucgen} from './src/Ucgen'
+import {Circle} from './src/Circle'
 var ornek
 var engine
 var ornek2
@@ -68,4 +69,5 @@ window.fonk4=fonk4
 window.Engine=Engine
 window.DrawableObject=DrawableObject
 window.Kare=Kare
+window.Circle=Circle
 window.Ucgen=Ucgen

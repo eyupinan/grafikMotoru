@@ -1,31 +1,43 @@
-
 <html>
-        <head><style>
-            canvas {
-    
-    background-color: #f1f1f1;
-    }</style> 
-     <script>
-        function fonkCanvas(){
-            var canvas = document.createElement("canvas");
-            let eng=new Engine({"autoRender":true,"frameRate":33,"backgroundColor":"red","canvas":canvas,"height":300,"width":500})
+    <head><style>
+        canvas {
+
+background-color: #f1f1f1;
+}</style>
+<script type="text/javascript" src="../bundled/graph.bundle.js"></script>
+ <script>
+        function fonkCanvas(wid,hei){
+            let eng=new Engine({"width":wid,"height":hei})
             let kare =new Kare()
-            
-            
-            kare.setPosition(100, 150)
-            kare.setSize(160)
-            kare.setAngles()
-            kare.setRotate(0)
-            kare.color = 'blue'
-            eng.add(kare)
-            console.log(eng._children)
+            kare.setPosition(300,200)
+            kare.setSize(150)
             kare.on("onmouseover",()=>{
-                kare.Degree=kare.Degree+3
+            kare.Degree=kare.Degree+3
             })
+            let ucgen = new Ucgen()
+            ucgen.setPosition(15,30)
+            ucgen.color="red"
+            ucgen.on('onmouseover', () => {
+            ucgen.degree = ucgen.degree - 3.3
+            })
+            let kare2 =new Kare()
+            kare2.setPosition(35, 10)
+            kare2.setSize(30)
+            kare2.setAngles()
+            kare2.setRotate(0)
+            kare2.color = 'yellow'
+            console.log(eng._children)
+            kare2.on("onmouseover",()=>{
+                kare2.Degree=kare2.Degree+5
+            })
+            eng.add(kare)
+            kare.add(ucgen)
+            ucgen.add(kare2)
+
         }
         </script></head>
-        <body>
-        <button onclick="fonkCanvas()" >canvas oluştur</button>
-        <script type="text/javascript" src="../bundled/graph.bundle.js"></script></body>
-    
-    </html>
+    <body>
+            <script>fonkCanvas(800,600)</script>
+    </body>
+
+</html>

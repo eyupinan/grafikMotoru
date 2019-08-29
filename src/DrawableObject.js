@@ -7,7 +7,9 @@ export class DrawableObject extends DisplayContainer {
     setAngle (x, y) {
         this.angles[this.angles.length] = [x, y, 1]
     }
-
+    clearAngles(){
+        this.angles=[]
+    }
     getAngles () {
         return this.angles
     }
@@ -129,4 +131,5 @@ export class DrawableObject extends DisplayContainer {
             // console.log(err)
         }
     }
+
 }

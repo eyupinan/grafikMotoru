@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <style>
+            a{
+                text-decoration: none
+            }
+        </style>
+    </head>
+    <body >
+        <script>function fonk(demo){
+            let element=document.getElementById("frame")
+            element.setAttribute("src","../html files/ornek "+demo+".html")
+        }</script>
+        <div style="position: absolute;border-style: solid;border-color:black;height:95%;width:6%;text-align: center">
+            <a onclick="fonk(1)" href="#">demo 1</a><br/>
+            <a onclick="fonk(2)" href="#">demo 2</a><br/>
+            <a onclick="fonk(3)" href="#">demo 3</a><br/>
+            <a onclick="fonk(4)" href="#">demo 4</a><br/>
+            <a onclick="fonk(5)" href="#">demo 5</a><br/>
+            <a onclick="fonk(6)" href="#">demo 6</a><br/>
+            </div>
+            <iframe src="../html files/ornek 1.html" id="frame" style="position: absolute;left: 11%;border:none;height:95%;border-style:solid;" width="85%" scrolling="no"> </iframe>
+
+    </body>
+</html>

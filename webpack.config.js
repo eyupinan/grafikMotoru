@@ -1,5 +1,4 @@
 const {join} = require('path')
-var HtmlWebpackPlugin=require('html-webpack-plugin');
 module.exports={
     entry:{
         graph:'./deneme.js'
@@ -15,12 +14,5 @@ module.exports={
           
         ]
       },
-      /*plugins:[
-          new HtmlWebpackPlugin({
-              output:'C:\\Users\\ibrahim eyyüp inan\\Desktop\\git\\grafikMotoru',
-              template:'./index.html',
-              filename:'index.html',
-              chunks:['graph']
-          }),
-        ]*/
+      
 }

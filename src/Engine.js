@@ -40,7 +40,11 @@ export class Engine extends DisplayContainer {
         this.canvas.height = this.height
         this.canvas.style.backgroundColor = this.canvasbackgroundColor
         this.context = this.canvas.getContext('2d')
-        document.body.insertBefore(this.canvas, document.body.childNodes[0])
+        try{
+        document.body.insertBefore(this.canvas, document.body.childNodes[0])}
+        catch(err){
+            console.log(err)
+        }
     }
 
     updateScreen () { // bu fonksiyon her frame de context'i temizler mouse konumunu yakalar ve update fonksiyonunu çağırır

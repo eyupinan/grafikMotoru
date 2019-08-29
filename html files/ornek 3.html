@@ -1,30 +1,39 @@
-<html>
-    <head><style>
-        canvas {
 
-background-color: #f1f1f1;
-}</style>
- <script>
-        function fonkCanvas(wid,hei){
-            let eng=new Engine({"width":wid,"height":hei})
+<html>
+        <head><style>
+            canvas {
+    
+    background-color: #f1f1f1;
+    }</style> 
+    <script type="text/javascript" src="../bundled/graph.bundle.js"></script>
+     <script>
+        function fonkCanvas(){
+            var canvas = document.createElement("canvas");
+            let eng=new Engine({"autoRender":true,"frameRate":33,"backgroundColor":"red","canvas":canvas,"height":500,"width":800})
             let kare =new Kare()
-        
-        
-        kare.setPosition(100, 150)
-        kare.setSize(160)
-        kare.setAngles()
-        kare.setRotate(0)
-        kare.color = 'blue'
-        eng.add(kare)
-        console.log(eng._children)
-        kare.on("onmouseover",()=>{
-            kare.Degree=kare.Degree+3
-        })
-            
+            kare.setPosition(100, 150)
+            kare.setSize(160)
+            kare.setAngles()
+            kare.setRotate(0)
+            kare.color = 'blue'
+            eng.add(kare)
+            console.log(eng._children)
+            kare.on("onmouseover",()=>{
+                kare.setPosition(kare.getOwnPosition()[0]+1,kare.getOwnPosition()[1])
+            })
+            let ucgen =new Ucgen()
+            ucgen.setPosition(20, 20)
+            ucgen.setRotate(0)
+            ucgen.color = 'green'
+            kare.add(ucgen)
+            console.log(eng._children)
+            ucgen.on("onmouseover",()=>{
+                ucgen.Degree=ucgen.Degree+3
+            })
         }
         </script></head>
-    <body>
-    <button onclick="fonkCanvas(800,600)" >canvas oluştur</button>
-    <script type="text/javascript" src="../bundled/graph.bundle.js"></script></body>
-
-</html>
+        <body>
+                <script>fonkCanvas()</script>
+        </body>
+    
+    </html>

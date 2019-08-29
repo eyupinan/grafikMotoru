@@ -1,0 +1,33 @@
+<html>
+    <head><style>
+        canvas {
+
+background-color: #f1f1f1;
+}</style>
+<script type="text/javascript" src="../bundled/graph.bundle.js"></script>
+ <script>
+        function fonkCanvas(wid,hei){
+            let eng=new Engine({"width":wid,"height":hei})
+            let draw=new DrawableObject()
+            draw.setPosition(100,100)
+            draw.setAngle( 10,10)
+            draw.setAngle( 170,30)
+            draw.setAngle( 220,90)
+            draw.setAngle( 150,130)
+            draw.setAngle( 40,112)
+            eng.add(draw)
+            draw.once("onmouseover",()=>{
+                draw.color="purple"
+            })
+            draw.once("onmouseleft",()=>{
+                draw.color="darkblue"
+            })
+
+        }
+        </script></head>
+    <body>
+            <script>fonkCanvas(800,500)</script>
+            <h3>once kullanımı</h3>
+    </body>
+
+</html>

@@ -5,20 +5,21 @@ export class Kare extends DrawableObject {
         const boyut = 50
         this.boyut = boyut
         super.setPosition(20, 20)
+        this.setAngles()
     }
 
     setSize (boyut) {
         this.boyut = boyut
+        this.setAngles()
     }
 
     setAngles () {
+        this.clearAngles()
         super.setAngle(0, 0)
         super.setAngle(this.boyut, 0)
         super.setAngle(this.boyut, this.boyut)
         super.setAngle(0, this.boyut)
     }
 
-    draw () {
-        super.draw()
-    }
+   
 }

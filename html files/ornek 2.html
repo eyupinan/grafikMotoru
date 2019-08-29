@@ -1,27 +1,34 @@
+
 <html>
-    <head>
+    <head><style>
+        canvas {
+
+background-color: #f1f1f1;
+}</style>
+<script type="text/javascript" src="../bundled/graph.bundle.js"></script>
  <script>
-    function fonkCanvas(wid,hei){
-        let eng=new Engine({"width":wid,"height":hei,"canvas":"canvas_id"})
-        eng.backgroundColor=3887359
-        let kare =new Kare()
+    function fonkCanvas(){
+        let eng=new Engine()
+        let circle =new Circle({"yaricap":100})
         
-        kare.setPosition(100, 150)
-        kare.setSize(160)
-        kare.setAngles()
-        kare.setRotate(0)
-        kare.color = 'blue'
-        eng.add(kare)
+        
+        circle.setPosition(100, 150)
+        //circle.yarıCap(160)
+        circle.setAngles()
+        circle.setRotate(0)
+        circle.color = 'blue'
+        eng.add(circle)
         console.log(eng._children)
-        kare.on("onmouseover",()=>{
-            kare.Degree=kare.Degree+3
+        circle.on("onmouseover",()=>{
+            //circle.setPosition(circle.getOwnPosition()[0]+1,circle.getOwnPosition()[1])
+            circle.yariCap=circle.yariCap+1
+            circle.resize()
+            
         })
-        
     }
     </script></head>
     <body>
-            <canvas id="canvas_id" width="0" height="0"></canvas>
-    <button onclick="fonkCanvas()" >canvas oluştur</button>
-    <script type="text/javascript" src="../bundled/graph.bundle.js"></script></body>
+            <script>fonkCanvas()</script>
+    </body>
 
 </html>

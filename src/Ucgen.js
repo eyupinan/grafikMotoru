@@ -10,7 +10,5 @@ export class Ucgen extends DrawableObject {
         super.setPosition(20, 20)
     }
 
-    draw () {
-        super.draw()
-    }
+    
 }
