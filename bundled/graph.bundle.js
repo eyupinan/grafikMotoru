@@ -81,22 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./deneme.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/grafikMotoru.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./deneme.js":
-/*!*******************!*\
-  !*** ./deneme.js ***!
-  \*******************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_Engine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/Engine */ \"./src/Engine.js\");\n/* harmony import */ var _src_DrawableObject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/DrawableObject */ \"./src/DrawableObject.js\");\n/* harmony import */ var _src_Kare__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/Kare */ \"./src/Kare.js\");\n/* harmony import */ var _src_Ucgen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/Ucgen */ \"./src/Ucgen.js\");\n/* harmony import */ var _src_Circle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/Circle */ \"./src/Circle.js\");\n\r\n\r\n\r\n\r\n\r\nvar ornek\r\nvar engine\r\nvar ornek2\r\nfunction baslat(){\r\n     ornek = new _src_Kare__WEBPACK_IMPORTED_MODULE_2__[\"Kare\"]()\r\n    ornek.name = 'kare'\r\n    ornek.setPosition(100, 150)\r\n    ornek.setSize(160)\r\n    ornek.setAngles()\r\n    ornek.setRotate(0)\r\n    ornek.color = 'blue'\r\n    ornek.on('onmouseover', () => {\r\n        ornek.Degree=ornek.Degree + 3\r\n    })\r\n    ornek2 = new _src_Ucgen__WEBPACK_IMPORTED_MODULE_3__[\"Ucgen\"]()\r\n    ornek2.setPosition(30, 40)\r\n    ornek2.setRotate(135)\r\n    ornek2.color = 'RGBA(255,0,0,0.7)'\r\n    ornek2.on('onmouseover', () => {\r\n        ornek2.degree = ornek2.degree - 3.1\r\n    })\r\n    let objectList=[]\r\n    for (let i=0;i<500;i++){\r\n        let ornek5 = new _src_Kare__WEBPACK_IMPORTED_MODULE_2__[\"Kare\"]()\r\n        ornek5.name = 'kare'\r\n        ornek5.setPosition(300, 150)\r\n        ornek5.setSize(160)\r\n        ornek5.setAngles()\r\n        ornek5.setRotate(30)\r\n        ornek5.color = 'blue'\r\n        objectList.push(ornek5)\r\n    }\r\n    objectList[0].on('onmouseover', () => {\r\n        objectList[0].Degree=objectList[0].Degree + 3\r\n    })\r\n    //var canvas=document.createElement(\"canvas\")\r\n    //canvas.setAttribute(\"id\",\"canvas_id\")\r\n    engine = new _src_Engine__WEBPACK_IMPORTED_MODULE_0__[\"Engine\"](1200,500,\"canvas_id\")\r\n    engine.add(ornek);\r\n    ornek.add(ornek2)\r\n    \r\n    for (let i=0;i<objectList.length;i++){\r\n        engine.add(objectList[i])\r\n        \r\n    }    \r\n}\r\nfunction fonk () {\r\n    ornek.autoRender=false\r\n}\r\nfunction fonk2 () {\r\n    ornek.autoRender=true\r\n}\r\nfunction fonk3 () {\r\n    ornek3.setPosition(ornek3.getOwnPosition()[0] + 5, ornek3.getOwnPosition()[1] + 5)\r\n}\r\nfunction fonk4(){\r\n    ornek.remove(ornek2);\r\n}\r\nwindow.baslat=baslat\r\nwindow.fonk = fonk\r\nwindow.fonk2 = fonk2\r\nwindow.fonk3 = fonk3\r\nwindow.fonk4=fonk4\r\nwindow.Engine=_src_Engine__WEBPACK_IMPORTED_MODULE_0__[\"Engine\"]\r\nwindow.DrawableObject=_src_DrawableObject__WEBPACK_IMPORTED_MODULE_1__[\"DrawableObject\"]\r\nwindow.Kare=_src_Kare__WEBPACK_IMPORTED_MODULE_2__[\"Kare\"]\r\nwindow.Circle=_src_Circle__WEBPACK_IMPORTED_MODULE_4__[\"Circle\"]\r\nwindow.Ucgen=_src_Ucgen__WEBPACK_IMPORTED_MODULE_3__[\"Ucgen\"]\n\n//# sourceURL=webpack:///./deneme.js?");
-
-/***/ }),
 
 /***/ "./node_modules/eventemt/src/CoreObject.js":
 /*!*************************************************!*\
@@ -178,6 +166,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Ucgen\", function() { return Ucgen; });\n/* harmony import */ var _DrawableObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DrawableObject */ \"./src/DrawableObject.js\");\n\r\nclass Ucgen extends _DrawableObject__WEBPACK_IMPORTED_MODULE_0__[\"DrawableObject\"] {\r\n    constructor () {\r\n        super()\r\n        const boyut = 120\r\n        this.boyut = boyut\r\n        super.setAngle(0, 0)\r\n        super.setAngle(boyut, 0)\r\n        super.setAngle(boyut / 2, (boyut / 2) * Math.sqrt(3))\r\n        super.setPosition(20, 20)\r\n    }\r\n\r\n    \r\n}\r\n\n\n//# sourceURL=webpack:///./src/Ucgen.js?");
+
+/***/ }),
+
+/***/ "./src/grafikMotoru.js":
+/*!*****************************!*\
+  !*** ./src/grafikMotoru.js ***!
+  \*****************************/
+/*! exports provided: Engine, DisplayContainer, DrawableObject, Kare, Ucgen, Circle */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Engine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Engine */ \"./src/Engine.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Engine\", function() { return _Engine__WEBPACK_IMPORTED_MODULE_0__[\"Engine\"]; });\n\n/* harmony import */ var _DrawableObject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DrawableObject */ \"./src/DrawableObject.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"DrawableObject\", function() { return _DrawableObject__WEBPACK_IMPORTED_MODULE_1__[\"DrawableObject\"]; });\n\n/* harmony import */ var _DisplayContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DisplayContainer */ \"./src/DisplayContainer.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"DisplayContainer\", function() { return _DisplayContainer__WEBPACK_IMPORTED_MODULE_2__[\"DisplayContainer\"]; });\n\n/* harmony import */ var _Kare__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Kare */ \"./src/Kare.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Kare\", function() { return _Kare__WEBPACK_IMPORTED_MODULE_3__[\"Kare\"]; });\n\n/* harmony import */ var _Ucgen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Ucgen */ \"./src/Ucgen.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Ucgen\", function() { return _Ucgen__WEBPACK_IMPORTED_MODULE_4__[\"Ucgen\"]; });\n\n/* harmony import */ var _Circle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Circle */ \"./src/Circle.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Circle\", function() { return _Circle__WEBPACK_IMPORTED_MODULE_5__[\"Circle\"]; });\n\n\r\n\r\n\r\n \r\n\r\n\r\n\r\nwindow.Engine=_Engine__WEBPACK_IMPORTED_MODULE_0__[\"Engine\"]\r\nwindow.DrawableObject=_DrawableObject__WEBPACK_IMPORTED_MODULE_1__[\"DrawableObject\"]\r\nwindow.Kare=_Kare__WEBPACK_IMPORTED_MODULE_3__[\"Kare\"]\r\nwindow.Circle=_Circle__WEBPACK_IMPORTED_MODULE_5__[\"Circle\"]\r\nwindow.Ucgen=_Ucgen__WEBPACK_IMPORTED_MODULE_4__[\"Ucgen\"]\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/grafikMotoru.js?");
 
 /***/ })
 

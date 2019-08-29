@@ -1,7 +1,7 @@
 const {join} = require('path')
 module.exports={
     entry:{
-        graph:'./deneme.js'
+        graph:'./src/grafikMotoru.js'
         },
     output:{
         path:join(__dirname, 'bundled'),
