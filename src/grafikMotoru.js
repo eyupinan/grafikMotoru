@@ -6,6 +6,7 @@ import {Ucgen} from './Ucgen'
 import {Circle} from './Circle'
 
 window.Engine=Engine
+window.DisplayContainer.DisplayContainer
 window.DrawableObject=DrawableObject
 window.Kare=Kare
 window.Circle=Circle
