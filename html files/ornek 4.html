@@ -5,26 +5,32 @@
      var kare;
      var eng;
     function fonkCanvas(){
-        eng=new Engine({"width":600,"height":500,"canvas":"canvas_id"})
+        eng=new Engine({"width":800,"height":500,"canvas":"canvas_id"})
         eng.backgroundColor=3887359
-        kare =new Kare()
         
-        kare.setPosition(100, 150)
-        kare.setSize(160)
-        kare.setAngles()
-        kare.setRotate(0)
-        kare.color = 'blue'
-        eng.add(kare)
-        console.log(eng._children)
-        kare.on("onmouseover",()=>{
-            kare.Degree=kare.Degree+3
-        })
-        
+    }
+    function objeUret(){
+        let obj=new DrawableObject()
+        let positions=[
+            [Math.floor(Math.random()*100),Math.floor(Math.random()*100)],
+            [Math.floor(Math.random()*100+100),Math.floor(Math.random()*100)],
+            [Math.floor(Math.random()*100+100),Math.floor(Math.random()*100+100)],
+            [Math.floor(Math.random()*100),Math.floor(Math.random()*100+100)]
+        ]
+        let red=Math.floor(Math.random()*256)
+        let green=Math.floor(Math.random()*256)
+        let blue=Math.floor(Math.random()*256)
+        let position=[Math.floor(Math.random()*(eng.width+100)-50),Math.floor(Math.random()*(50+eng.height)-50)]
+        obj.setPosition(position[0],position[1])
+        obj.color="RGB("+red+","+green+","+blue+")"
+        obj.setAngles(positions)
+        eng.add(obj)
     }
     </script></head>
     <body>
             <canvas id="canvas_id" width="0" height="0"></canvas>
             <script>fonkCanvas()</script>
+            <button onclick=objeUret()>obje üret</button>
     
 
 </html>

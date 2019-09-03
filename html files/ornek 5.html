@@ -8,36 +8,29 @@ background-color: #f1f1f1;
  <script>
         function fonkCanvas(wid,hei){
             let eng=new Engine({"width":wid,"height":hei})
-            let kare =new Kare()
-            kare.setPosition(300,200)
-            kare.setSize(150)
-            kare.on("onmouseover",()=>{
-            kare.Degree=kare.Degree+3
-            })
-            let ucgen = new Ucgen()
-            ucgen.setPosition(15,30)
-            ucgen.color="red"
-            ucgen.on('onmouseover', () => {
-            ucgen.degree = ucgen.degree - 3.3
-            })
-            let kare2 =new Kare()
-            kare2.setPosition(35, 10)
-            kare2.setSize(30)
-            kare2.setAngles()
-            kare2.setRotate(0)
-            kare2.color = 'yellow'
-            console.log(eng._children)
-            kare2.on("onmouseover",()=>{
-                kare2.Degree=kare2.Degree+5
-            })
-            eng.add(kare)
-            kare.add(ucgen)
-            ucgen.add(kare2)
-
+            let obj =new DrawableObject()
+            let obj2 =new DrawableObject()
+            obj.setPosition(200,200)
+            obj2.setPosition(400,200)
+            obj.color="blue"
+            obj2.color="red"
+            let positions=[
+                [0,0],
+                [100,0],
+                [50,150]    
+            ]
+            obj.setAngles(positions)
+            //
+            obj2.setAngles(0,0)
+            obj2.setAngles(100,0)
+            obj2.setAngles(50,150)
+            eng.add(obj)
+            eng.add(obj2)
         }
         </script></head>
     <body>
             <script>fonkCanvas(800,600)</script>
+            <h4>köşeler iki farklı şekilde verilebilir</h4>
     </body>
 
 </html>

@@ -3,46 +3,28 @@
         canvas {
 
 background-color: #f1f1f1;
-}</style> 
+}</style>
 <script type="text/javascript" src="../bundled/graph.bundle.js"></script>
  <script>
-     var eng 
-     var kare
-    function fonkCanvas(){
-        var canvas = document.createElement("canvas");
-        eng=new Engine({"width":899,"height":500,"canvas":canvas,"autoRender":true ,"frameRate":32})
-        //eng.frameCalculator() bunu açarsanız saniyede kaç kare gösterildiğini ekrana basar
-        kare =new Kare()
-        kare.setPosition(100, 150)
-        kare.setSize(160)
-        kare.setAngles()
-        kare.setRotate(0)
-        kare.color = 'blue'
-        eng.add(kare)
-        console.log(eng._children)
-        kare.on("onmouseover",()=>{
-            kare.Degree=kare.Degree+3
-        })
-        objectList=[]
-        for (let i=0;i<5000;i++){
-            eng.add(new Kare())
-        }}
-        function fonkFrame(){
-            let element=document.getElementById("fps2")
-            setInterval(()=>{
-                element.innerHTML="frameRate:"+eng.frameRate
-            },1000)
+        let eng;
+        let kare;
+        function fonkCanvas(wid,hei){
+            eng=new Engine({"width":wid,"height":hei})
+            kare=new Kare({"autoRender":false})
+            kare.setPosition(100,100)
+            kare.setSize(200)
+            kare.setAngles()
+            eng.add(kare)
+
         }
-    
-    function autoRender(){
-        kare.autoRender=!kare.autoRender
-    }
-    </script></head>
+        function auto(){
+            kare.autoRender=!kare.autoRender
+        }
+        </script></head>
     <body>
-    <h3 id ="fps2"></h3><!--Engine direk 'fps' id sine ait elementi alıp içine frameRate değerini yazıyor.Kolay olsun diye -->
-    <script>fonkCanvas()
-    fonkFrame()
-    </script>
-    <button onclick="autoRender()" >autoRender değiştir</button>
+            <script>fonkCanvas(800,500)</script>
+            <h3>autoRender kullanımı (başlangıçta Kare'ye false olarak verilir)</h3>
+            <button onclick="auto()">autoRender değiştir</button>
     </body>
+
 </html>

@@ -2,6 +2,7 @@ import { DisplayContainer } from './DisplayContainer'
 export class Engine extends DisplayContainer {
     constructor (options) {
         super()
+        this.count=0;
         this.frameCount = 0
         this.lastFrameCount = 0
         this.autoRender = true
@@ -49,6 +50,8 @@ export class Engine extends DisplayContainer {
 
     updateScreen () { // bu fonksiyon her frame de context'i temizler mouse konumunu yakalar ve update fonksiyonunu çağırır
         try {
+            this.count++;
+            
             this.frameCount++
             this.clear()
             this.renderVerify = this.update(this.context)

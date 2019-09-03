@@ -1,11 +1,29 @@
 import { DisplayContainer } from './DisplayContainer'
 export class DrawableObject extends DisplayContainer {
-    constructor () {
+    constructor (options) {
         super()
+        this.alfa=-45;
+        this.beta=35.26;
+        if (options===undefined){options={}}
+        if (options.yaricap!==undefined){this._yariCap=options.yaricap}
+        if(options.autoRender!==undefined){this.autoRender=options.autoRender}
+        if(options.frameRate!==undefined){this.frameRate=this.frameRate}
+        if(options.color!=undefined){this.color=options.color}
     }
+    setEdges(obj){
+        this.edges=obj
+    }
+    setAngles(){
+        if (arguments.length===1){
+            let len=this.angles.length
+            for (let i=0;i<arguments[0].length;i++){
+                this.angles[len+i]=[arguments[0][i][0],arguments[0][i][1],1]
+            }
+        }
+        else if(arguments.length===2){
+            this.angles[this.angles.length] = [arguments[0], arguments[1], 1]
+        }
 
-    setAngle (x, y) {
-        this.angles[this.angles.length] = [x, y, 1]
     }
     clearAngles(){
         this.angles=[]
@@ -13,7 +31,7 @@ export class DrawableObject extends DisplayContainer {
     getAngles () {
         return this.angles
     }
-
+    
     setPosition (x, y) {
         this.ownX = x
         this.ownY = y
@@ -45,55 +63,22 @@ export class DrawableObject extends DisplayContainer {
         return this.degree
     }
 
-    setRotate (degree) {
-        this.degree = degree
-        const center = this.center()
-        const position = this.getPosition()
-        const centerRelated = [center[0] - position[0], position[1] - center[1]]
-        const rad = this.degreesToRadians(degree)
-        const sonuc1 = this.matrixMultiply(this.angles, [[1, 0, 0],
-            [0, 1, 0],
-            [-1 * centerRelated[0], centerRelated[1], 1]])
-        const sonuc2 = this.matrixMultiply(sonuc1, [[Math.cos(rad), -1 * Math.sin(rad), 0],
-            [Math.sin(rad), Math.cos(rad), 0],
-            [0, 0, 1]])
-        this.rotatedAngles = this.matrixMultiply(sonuc2, [[1, 0, 0],
-            [0, 1, 0],
-            [centerRelated[0], -1 * centerRelated[1], 1]])
-    }
-
-    center () {
-        let totalX = 0
-        let totalY = 0
-        for (let i = 0; i < this.angles.length; i++) {
-            totalX = totalX + this.angles[i][0]
-            totalY = totalY + this.angles[i][1]
-        }
-        const center = [this.getPosition()[0] + (totalX / this.angles.length), this.getPosition()[1] + (totalY / this.angles.length)]
-        this.centerPosition = center
-        return center
-    }
-
-    matrixMultiply (a, b) {
-        var aNumRows = a.length; var aNumCols = a[0].length
-        var bNumCols = b[0].length
-        var m = new Array(aNumRows)
-        for (var r = 0; r < aNumRows; ++r) {
-            m[r] = new Array(bNumCols)
-            for (var c = 0; c < bNumCols; ++c) {
-                m[r][c] = 0
-                for (var i = 0; i < aNumCols; ++i) {
-                    m[r][c] += a[r][i] * b[i][c]
-                }
+    
+    matrixSum(a,b,m="sum"){
+        let sum=[]
+        if (m==="sum"){
+            for (let i=0;i<a.length;i++){
+                sum[i]=a[i]+b[i]
             }
-        }
-        return m
+        } 
+        if (m==="sub"){
+            for (let i=0;i<a.length;i++){
+                sum[i]=a[i]-b[i]
+            }
+        }   
+        return sum
     }
-
-    degreesToRadians (degrees) {
-        var pi = Math.PI
-        return degrees * (pi / 180)
-    }
+    
 
     set Degree (degree) {
         this.degree = degree
@@ -130,6 +115,57 @@ export class DrawableObject extends DisplayContainer {
         } catch (err) {
             // console.log(err)
         }
+    }
+    setRotate (degree) {
+        
+        this.degree = degree
+        const center = this.center()
+        const position = this.getPosition()
+        const centerRelated = [center[0] - position[0], position[1] - center[1]]
+        const rad = this.degreesToRadians(degree)
+
+        const sonuc1 = this.matrixMultiply(this.angles, [[1, 0, 0],
+            [0, 1, 0],
+            [-1 * centerRelated[0], centerRelated[1], 1]])
+        const sonuc2 = this.matrixMultiply(sonuc1, [[Math.cos(rad), -1 * Math.sin(rad), 0],
+            [Math.sin(rad), Math.cos(rad), 0],
+            [0, 0, 1]])
+        this.rotatedAngles = this.matrixMultiply(sonuc2, [[1, 0, 0],
+            [0, 1, 0],
+            [centerRelated[0], -1 * centerRelated[1], 1]])
+    }
+
+    center () {
+        let totalX = 0
+        let totalY = 0
+        for (let i = 0; i < this.angles.length; i++) {
+            totalX = totalX + this.angles[i][0]
+            totalY = totalY + this.angles[i][1]
+        }
+        const center = [this.getPosition()[0] + (totalX / this.angles.length), this.getPosition()[1] + (totalY / this.angles.length)]
+        this.centerPosition = center
+        return center
+    }
+
+    matrixMultiply (a, b) {
+
+        var aNumRows = a.length; var aNumCols = a[0].length
+        var bNumCols = b[0].length
+        var m = new Array(aNumRows)
+        for (var r = 0; r < aNumRows; ++r) {
+            m[r] = new Array(bNumCols)
+            for (var c = 0; c < bNumCols; ++c) {
+                m[r][c] = 0
+                for (var i = 0; i < aNumCols; ++i) {
+                    m[r][c] += a[r][i] * b[i][c]
+                }
+            }
+        }
+        return m
+    }
+    degreesToRadians (degrees) {
+        var pi = Math.PI
+        return degrees * (pi / 180)
     }
 
 }

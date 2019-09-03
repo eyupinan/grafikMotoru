@@ -8,26 +8,37 @@ background-color: #f1f1f1;
  <script>
         function fonkCanvas(wid,hei){
             let eng=new Engine({"width":wid,"height":hei})
-            let draw=new DrawableObject()
-            draw.setPosition(100,100)
-            draw.setAngle( 10,10)
-            draw.setAngle( 170,30)
-            draw.setAngle( 220,90)
-            draw.setAngle( 150,130)
-            draw.setAngle( 40,112)
-            eng.add(draw)
-            draw.once("onmouseover",()=>{
-                draw.color="purple"
-            })
-            draw.once("onmouseleft",()=>{
-                draw.color="darkblue"
-            })
-
+            let obj =new DrawableObject()
+            let obj2 =new DrawableObject()
+            let positions=[
+                [0,0],
+                [100,0],
+                [50,50],
+                [100,100],
+                [0,100]
+            ]
+            let edges=[
+                [0,2],
+                [1,3],
+                [2,1],
+                [3,4],
+                [4,0]
+                
+            ]
+            obj.setPosition(200,200)
+            obj.color="blue"
+            obj.setAngles(positions)
+            obj2.setPosition(400,200)
+            obj2.color="red"
+            obj2.setAngles(positions)
+            obj2.setEdges(edges)
+            eng.add(obj)
+            eng.add(obj2)
         }
         </script></head>
     <body>
-            <script>fonkCanvas(800,500)</script>
-            <h3>once kullanımı</h3>
+            <script>fonkCanvas(800,600)</script>
+            <h4>soldaki cisimde sadece koşe koordinatları, sağdaki cisimde köşe koordinatları ile birlikte kenarlarda verilmiştir</h4>
     </body>
 
 </html>

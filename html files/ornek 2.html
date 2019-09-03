@@ -7,28 +7,27 @@ background-color: #f1f1f1;
 }</style>
 <script type="text/javascript" src="../bundled/graph.bundle.js"></script>
  <script>
+    var eng
     function fonkCanvas(){
-        let eng=new Engine()
-        let circle =new Circle({"yaricap":100})
-        
-        
-        circle.setPosition(100, 150)
-        //circle.yarıCap(160)
+        eng=new Engine()        
+    }
+    function daireEkle(){
+        let circle=new Circle()
+        let yaricap=Math.floor(Math.random()*150)
+        let red=Math.floor(Math.random()*256)
+        let green=Math.floor(Math.random()*256)
+        let blue=Math.floor(Math.random()*256)
+        let position=[Math.floor(Math.random()*(eng.width+50)-50),Math.floor(Math.random()*(50+eng.height)-50)]
+        circle.yariCap=yaricap;
+        circle.setPosition(position[0],position[1])
+        circle.color="RGB("+red+","+green+","+blue+")"
         circle.setAngles()
-        circle.setRotate(0)
-        circle.color = 'blue'
         eng.add(circle)
-        console.log(eng._children)
-        circle.on("onmouseover",()=>{
-            //circle.setPosition(circle.getOwnPosition()[0]+1,circle.getOwnPosition()[1])
-            circle.yariCap=circle.yariCap+1
-            circle.resize()
-            
-        })
     }
     </script></head>
     <body>
             <script>fonkCanvas()</script>
+            <button onclick="daireEkle()">daire ekle</button>
     </body>
 
 </html>

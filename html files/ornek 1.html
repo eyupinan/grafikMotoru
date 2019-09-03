@@ -7,29 +7,31 @@ background-color: #f1f1f1;
 <script type="text/javascript" src="../bundled/graph.bundle.js"></script>
  <script>
      var eng 
-     var kare
     function fonkCanvas(){
         var canvas = document.createElement("canvas");
-        eng=new Engine({"width":899,"height":500,"canvas":canvas,"autoRender":true ,"frameRate":32})
-        kare =new Kare()
-        kare.setPosition(100, 150)
-        kare.setSize(160)
-        kare.setAngles()
-        kare.setRotate(0)
-        kare.color = 'blue'
-        eng.add(kare)
-        console.log(eng._children)
-        kare.on("onmouseover",()=>{
-            kare.Degree=kare.Degree+3
-        })
+        eng=new Engine({"width":900,"height":500,"canvas":canvas})
+
+        
     }
-    function autoRender(){
-        kare.autoRender=!kare.autoRender
+    function kareUret(){
+        let kare = new Kare()
+        let red=Math.floor(Math.random()*256)
+        let green=Math.floor(Math.random()*256)
+        let blue=Math.floor(Math.random()*256)
+        let size=Math.floor(Math.random()*200)
+        let position=[Math.floor(Math.random()*eng.width),Math.floor(Math.random()*eng.height)]
+        kare.setPosition(position[0],position[1])
+        kare.setSize(size)
+        kare.color="RGB("+red+","+green+","+blue+")"
+        eng.add(kare)
+        /*let degree=Math.random()*10-5
+        kare.on("onmouseover",()=>{
+                kare.Degree=kare.Degree+degree
+            })*/
     }
     </script></head>
     <body>
-    <h3 id ="fps"></h3><!--Engine direk 'fps' id sine ait elementi alıp içine frameRate değerini yazıyor.Kolay olsun diye -->
     <script>fonkCanvas()</script>
-    <button onclick="autoRender()" >autoRender değiştir</button>
+    <button onclick="kareUret()">kare üret</button>
     </body>
 </html>

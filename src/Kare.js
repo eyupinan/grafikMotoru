@@ -1,9 +1,16 @@
 import { DrawableObject } from './DrawableObject'
 export class Kare extends DrawableObject {
-    constructor () {
+    constructor (options) {
         super()
+        
         const boyut = 50
         this.boyut = boyut
+        if (options===undefined){options={}}
+        if (options.yaricap!==undefined){this._yariCap=options.yaricap}
+        if (options.autoRender!==undefined){this.autoRender=options.autoRender}
+        if (options.frameRate!==undefined){this.frameRate=this.frameRate}
+        if (options.color!==undefined){this.color=options.color}
+        if (options.size!==undefined){this.boyut=options.size}
         super.setPosition(20, 20)
         this.setAngles()
     }
@@ -15,10 +22,10 @@ export class Kare extends DrawableObject {
 
     setAngles () {
         this.clearAngles()
-        super.setAngle(0, 0)
-        super.setAngle(this.boyut, 0)
-        super.setAngle(this.boyut, this.boyut)
-        super.setAngle(0, this.boyut)
+        super.setAngles(0, 0)
+        super.setAngles(this.boyut, 0)
+        super.setAngles(this.boyut, this.boyut)
+        super.setAngles(0, this.boyut)
     }
 
    

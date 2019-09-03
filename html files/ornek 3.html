@@ -7,33 +7,31 @@
     }</style> 
     <script type="text/javascript" src="../bundled/graph.bundle.js"></script>
      <script>
+         var eng
         function fonkCanvas(){
             var canvas = document.createElement("canvas");
-            let eng=new Engine({"autoRender":true,"frameRate":33,"backgroundColor":"red","canvas":canvas,"height":500,"width":800})
-            let kare =new Kare()
-            kare.setPosition(100, 150)
-            kare.setSize(160)
-            kare.setAngles()
-            kare.setRotate(0)
-            kare.color = 'blue'
-            eng.add(kare)
-            console.log(eng._children)
-            kare.on("onmouseover",()=>{
-                kare.setPosition(kare.getOwnPosition()[0]+1,kare.getOwnPosition()[1])
-            })
-            let ucgen =new Ucgen()
-            ucgen.setPosition(20, 20)
-            ucgen.setRotate(0)
-            ucgen.color = 'green'
-            kare.add(ucgen)
-            console.log(eng._children)
-            ucgen.on("onmouseover",()=>{
-                ucgen.Degree=ucgen.Degree+3
-            })
+            eng=new Engine({"backgroundColor":"red","canvas":canvas,"height":500,"width":800})
+            
+        }
+        function ucgenEkle(){
+            let ucgen=new Ucgen()
+            let size=Math.floor(Math.random()*150)
+            let red=Math.floor(Math.random()*256)
+            let green=Math.floor(Math.random()*256)
+            let blue=Math.floor(Math.random()*256)
+            let position=[Math.floor(Math.random()*(eng.width+50)-50),Math.floor(Math.random()*(50+eng.height)-50)]
+            let degree=Math.random()*360
+            ucgen.setSize(size)
+            ucgen.setPosition(position[0],position[1])
+            ucgen.color="RGB("+red+","+green+","+blue+")"
+            ucgen.degree=degree
+            ucgen.setAngles()
+            eng.add(ucgen)
         }
         </script></head>
         <body>
                 <script>fonkCanvas()</script>
+                <button onclick="ucgenEkle()">üçgen ekle</button>
         </body>
     
     </html>
